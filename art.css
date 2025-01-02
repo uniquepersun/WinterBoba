@@ -4,15 +4,47 @@ body {
     color: white;
     background-color: #b30f0f;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 h1 {
-    display:flex;
+    position: relative;
+    z-index: 999;
+    display: inline-block;
     font-size: 7vh;
-    letter-spacing: .75vh;
+    letter-spacing: 0.01vh;
+    text-align: center;
+    text-shadow: red 5px 2px;
+}
+
+::selection {
+    background: inherit;
+}
+
+#b1,
+#b2 {
+    fill: #ff5e0094;
+}
+
+.blobbing {
+    position: absolute;
+    transform: translate(-50%, -80%);
+    z-index: -1;
+}
+
+#glass {
+    filter: blur(9px);
+}
+
+.text>.letter:nth-child(1) {
+    transform: translate(-80%, 60%) rotate(10deg);
 }
 
 .snow_container {
@@ -26,7 +58,7 @@ h1 {
 }
 
 .snowfall {
-    z-index: top;
+    z-index: 1;
     position: absolute;
     inset: 0;
     overflow: hidden;
@@ -124,12 +156,11 @@ h1 {
 }
 
 .canvas {
-    z-index: -1;
     flex-shrink: 0;
     width: 80%;
     height: 70%;
-    overflow:hidden;
-    position:relative;
+    overflow: hidden;
+    position: relative;
     background-color: #c21616;
     border-radius: 6px;
     box-shadow: inset 0px 4px 20px 0px rgb(255 255 255 / 58%);
@@ -291,4 +322,71 @@ h1 {
 .ground-d {
     height: 20px;
     background-color: #4a8484;
+}
+
+.glow-point {
+    position: absolute;
+    box-shadow: 0rem 0rem 1.2rem 0.6rem #d1ff06;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 1rem;
+    animation-duration: 1500ms;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+}
+
+@keyframes f1 {
+    0% {
+        transform: translate(0px, 0px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(0.25);
+        opacity: 0;
+    }
+
+    5% {
+        transform: translate(10px, -10px) rotateX(45deg) rotateY(30deg) rotateZ(0deg) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(25px, 200px) rotateX(180deg) rotateY(270deg) rotateZ(90deg) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes f2 {
+    0% {
+        transform: translate(0px, 0px) rotateX(-20deg) rotateY(10deg) scale(0.25);
+        opacity: 0;
+    }
+
+    10% {
+        transform: translate(-10px, -5px) rotateX(-20deg) rotateY(10deg) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-10px, 160px) rotateX(-90deg) rotateY(45deg) scale(0.25);
+        opacity: 0;
+    }
+}
+
+@keyframes f3 {
+    0% {
+        transform: translate(0px, 0px) rotateX(0deg) rotateY(45deg) scale(0.5);
+        opacity: 0;
+    }
+
+    15% {
+        transform: translate(7px, 5px) rotateX(0deg) rotateY(45deg) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(20px, 120px) rotateX(-180deg) rotateY(-90deg) scale(0.5);
+        opacity: 0;
+    }
 }
